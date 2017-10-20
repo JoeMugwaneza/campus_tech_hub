@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     get 'signout', to: 'devise/sessions#destroy', as: :signout
   end
 
-  resources :questions
+  resources :questions do 
+    resources :answers
+  end
 end

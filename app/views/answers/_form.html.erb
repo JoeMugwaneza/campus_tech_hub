@@ -1,0 +1,9 @@
+<div id="questions">
+  <%= form_for [@question, @question.answers.build]  do |f| %>
+    <%= f.text_area :content %><br><br>
+    <%= f.hidden_field :user_id, value: "#{user_id = current_user.id}" %>
+    <%= f.hidden_field :question_id, value: "#{question_id = @question.id}" %>
+    <%= f.submit "Your Answer" %>
+  <% end %>
+  
+</div>

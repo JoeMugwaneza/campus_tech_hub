@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order('created_at DESC')
   end
 
   def show
@@ -37,6 +37,13 @@ class QuestionsController < ApplicationController
       render "edit"
     end
   end
+
+  def destroy
+    @question = Question.find_by(id: params[:id])
+    @question.destroy
+
+    redirect_to root_path
+  end 
 
   private
 
