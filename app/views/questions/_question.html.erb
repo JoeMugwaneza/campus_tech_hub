@@ -4,14 +4,17 @@
   <title></title>
 </head>
 
-<body id="questions">
+<body>
+  <div id="questions">
+    <p class="subject_line">
+      <%= link_to question.subject_line, question %><br>
+    </p>
+    <p class="description">
+      <%= question.description %>
+    </p>
+    
+  </div>
 
-  <p class="subject_line">
-    <%= link_to question.subject_line, question %><br>
-  </p>
-  <p class="description">
-    <%= question.description %>
-  </p>
 
 </body>
 </html>

@@ -9,7 +9,12 @@
   </head>
 
   <body>
-  <a href="/">Home</a>
+    <a href="/">Home</a><br>
+    <% if user_signed_in? %>
+    <a style="float: right;" href="<%=signout_path%>">Log Out</a>
+    <% else %>
+    <a href="<%= new_user_session_path %>">Log In</a>
+    <% end %>
   
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
