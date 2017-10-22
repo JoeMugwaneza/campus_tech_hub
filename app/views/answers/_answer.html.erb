@@ -6,8 +6,11 @@
 <body>
    <div id="comments">
   
-     <%= answer.content %>
-     <%= link_to "edit", "/questions/#{@question.id}/answers/#{answer.id}/edit" %>
+    <%= answer.content %>
+    <% if current_user && current_user.answers.include?(answer) %>
+      <%= link_to "Edit", "/questions/#{@question.id}/answers/#{answer.id}/edit" %> 
+      <%= link_to "Delete", "/questions/#{@question.id}/answers/#{answer.id}", method: :delete %>
+    <% end %>
    </div>
 </body>
 </html>

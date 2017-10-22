@@ -28,10 +28,9 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question = Question.find_by(id: params[:id])
-    @question.update_attributes(question_params)
+    @question = Question.find_by(id: params[:id]) 
 
-    if @question.save
+    if @question.update_attributes(question_params)
       redirect_to @question
     else 
       render "edit"

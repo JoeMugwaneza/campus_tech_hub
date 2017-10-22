@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     get 'signout', to: 'devise/sessions#destroy', as: :signout
   end
 
+  resources :users, :only => :show, as: :user_profile
+  resources :users, :only => :edit, as: :profile
+  resources :users, :only => :update
+
   resources :questions do 
     resources :answers
   end
