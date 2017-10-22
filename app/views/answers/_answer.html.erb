@@ -5,7 +5,9 @@
 </head>
 <body>
    <div id="comments">
+  
      <%= answer.content %>
+     <%= link_to "edit", "/questions/#{@question.id}/answers/#{answer.id}/edit" %>
    </div>
 </body>
 </html>
