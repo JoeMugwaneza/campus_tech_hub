@@ -2,13 +2,15 @@ class AnswersController < ApplicationController
 
   before_action :set_answer
   def index
-    @answers = @question.answers
+    @answers = @question.answers.each do |answer|
+      @answer = answer
+    end
   end
+
   def show
-    
     @answer = @question.answers.find_by(id: params[:id])
-    
   end
+
   def new
     @answer = Answer.new
   end
@@ -35,6 +37,13 @@ class AnswersController < ApplicationController
     @answer = @question.answers.find_by(id: params[:id])
     @answer.update_attributes(answer_params)
 
+    redirect_to @question
+  end
+
+  def destroy
+    @answer = @question.answers.find_by(id: params[:id])
+    @answer.destroy
+    
     redirect_to @question
   end
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <h1 class="profile_body">User Profile</h1>
+  <div class="user_profiles">
+  <ul>
+    <li>
+      <strong> Full Name</strong>: <%= "#{@user.first_name} #{@user.last_name}"%>
+    </li><br>
+    <li>
+      <strong>Email Address</strong>: <%= @user.email %>
+    </li><br>
+
+    <li>
+      <strong>School</strong>: <%= @user.school %>
+    </li>
+  </ul>
+    
+  </div>
+
+</body>
+</html>
