@@ -6,11 +6,12 @@
 
 <body>
   <div id="questions">
-    <p class="subject_line">
+    <h2 class="subject_line">
       <%= link_to question.subject_line, question %><br>
-    </p>
+    </h2>
+      <%= simple_format question.description %>
     <p class="description">
-      <%= question.description %>
+      Tags: <%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
     </p>
     
   </div>

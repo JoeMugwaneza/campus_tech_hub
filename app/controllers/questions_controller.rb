@@ -1,7 +1,13 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all.order('created_at DESC')
+
+    @questions = if params[:tag]
+      Question.tagged_with(params[:tag])
+
+    else
+      @questions = Question.all
+    end
   end
 
   def show
@@ -28,7 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question = Question.find_by(id: params[:id]) 
+    @question = Question.find(params[:id]) 
 
     if @question.update_attributes(question_params)
       redirect_to @question
@@ -47,12 +53,12 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:subject_line, :description, :user_id)
+    params.require(:question).permit(:subject_line, :description, :user_id, :tag_list)
     
   end
 
   def find_question
-    @question = Question.find_by(id: params[:id])
+    @question = Question.find(params[:id])
   end
 
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tags/:tag', to: 'questions#index', as: :tag, :constraints  => { :tag => /[^\/]+/ }
+
   root 'questions#index'
   devise_for :users
 

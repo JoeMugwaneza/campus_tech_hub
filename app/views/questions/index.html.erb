@@ -2,4 +2,9 @@
 <% if user_signed_in? %>
   <%= link_to "User Profile",  user_profile_path(current_user) %>
 <% end %>
-<%= render @questions %>
+<div id="tag_cloud" class="tags_banner">
+  <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+</div>
+<%= render @questions.reverse %>
