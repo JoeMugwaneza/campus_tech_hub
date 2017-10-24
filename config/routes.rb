@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'tags/:tag', to: 'questions#index', as: :tag, :constraints  => { :tag => /[^\/]+/ }
 
+
   root 'questions#index'
   devise_for :users
+
 
   
   devise_scope :user do
@@ -13,7 +15,10 @@ Rails.application.routes.draw do
   resources :users, :only => :edit, as: :profile
   resources :users, :only => :update
 
+
   resources :questions do 
     resources :answers
   end
+
+  get 'home', to: 'users#home'
 end
