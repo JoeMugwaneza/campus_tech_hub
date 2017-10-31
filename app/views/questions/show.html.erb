@@ -1,6 +1,6 @@
 <% if current_user && current_user.questions.include?(@question) %>
-  <%= link_to "Edit", edit_question_path(@question) %>
-  <%= link_to "Delete", question_path, method: :delete%>
+  <button class="btn btn-success btn-block" style="width:200px; margin-left: 20px; background-color: #AFE7AA;"><span class="fa fa-pencil"></span><%= link_to "Edit", edit_question_path(@question) %></button>
+  <button class="btn btn-danger btn-block" style="width:200px; margin-left: 20px; background-color: #F8BFBF"><span class="fa fa-trash"></span><%= link_to "Delete", question_path, method: :delete%></button>
 <% end %>
 <%= render @question %>
 <h4 id="questions">This question has got <%= @question.answers.count %> Answers</h4>
