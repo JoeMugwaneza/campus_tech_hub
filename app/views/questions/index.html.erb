@@ -1,12 +1,36 @@
-<%= link_to "New Question", new_question_path%><br>
+<link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<button class="btn btn-success btn-block" style="width:200px; margin-left: 20px; background-color: #AFE7AA;"><span class="fa fa-plus-circle"></span><%= link_to "New Question", new_question_path%><br></button>
 <% if user_signed_in? %>
-  <%= link_to "User Profile",  user_profile_path(current_user) %>
+   <button class="btn btn-info btn-block" style="width: 200px; margin-left: 20px; background-color: #AAE7DF;"><span class="fa fa-user"></span><%= link_to "User Profile",  user_profile_path(current_user) %></button>
 <% end %>
-<div id="tag_cloud" class="tags_banner">
-  <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
+
+
+
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+  <div class="row panel">
+    
+        <div class="col-md-8  col-xs-12">
+           
+           <div class="header">
+
+            <div class="header" style="font-family: 'Josefin Slab', serif;">
+              
+
+    <div id="tag_cloud" class="tags_banner" style="width: 300px; background-color: white; border-color: white; font-family: 'Josefin Slab', serif;">
+  <h2> Tags: <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %></h2>
     <%= link_to tag.name, tag_path(tag.name), class: css_class %>
     <% end %>
 </div>
-<%= render @questions.reverse %>
+    
+
+           </div>
+               
+           </div>
+        </div>
+    </div>   
 
 
+    <%= render @questions.reverse %>
