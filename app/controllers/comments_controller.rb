@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
       redirect_to [@question, @commentable], notice: "comment created"
     else
