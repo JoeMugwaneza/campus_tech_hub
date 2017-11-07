@@ -6,8 +6,11 @@
 <body>
 <div>
   <p id="questions">
-    <%= @answer.content %>
+   <%= @answer.content %>
   </p>
+  
+    <%= render "comments/comments" %>
+    <%= render "comments/form" %>
 </div>
 </body>
 </html>

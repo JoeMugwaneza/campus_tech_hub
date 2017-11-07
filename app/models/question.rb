@@ -1,9 +1,9 @@
 class Question < ApplicationRecord
-  has_many :answers
+  has_many :answers, :dependent => :destroy
   belongs_to :user
 
   # for tags
-  has_many :taggings
+  has_many :taggings, :dependent => :destroy
   has_many :tags, through: :taggings
 
 

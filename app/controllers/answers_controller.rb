@@ -1,14 +1,14 @@
 class AnswersController < ApplicationController
 
-  before_action :set_answer
+  before_action :set_answer, only: [:show, :create, :update, :destroy ]
   def index
-    @answers = @question.answers.each do |answer|
-      @answer = answer
-    end
+    @answers = @question.answers
   end
 
   def show
-    @answer = @question.answers.find_by(id: params[:id])
+    @commentable = @answer
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   def new
@@ -57,5 +57,6 @@ class AnswersController < ApplicationController
 
   def set_answer
     @question = Question.find(params[:question_id])
+    @answer = @question.answers.find_by(id: params[:id])
   end
 end

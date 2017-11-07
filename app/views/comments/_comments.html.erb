@@ -1,0 +1,6 @@
+<div>
+  <p style="padding-left: 30px;">
+    <% @comments.each do |comment| %>
+      <%= simple_format comment.content%>
+    <% end %>
+  </p>

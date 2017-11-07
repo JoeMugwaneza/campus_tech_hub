@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
 
   def show
     find_question
+
   end
 
   def new
