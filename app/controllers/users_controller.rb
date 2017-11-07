@@ -1,17 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :find_user
-
-  def show
-    find_user
-  end
-
-  def edit
-    find_user
-  end
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def update
-    find_user
     if @user.update_attributes(user_params)
       redirect_to @user
     else

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+
+  get 'comments/new'
+
   get 'tags/:tag', to: 'questions#index', as: :tag, :constraints  => { :tag => /[^\/]+/ }
 
 
@@ -17,7 +21,9 @@ Rails.application.routes.draw do
 
 
   resources :questions do 
-    resources :answers
+    resources :answers do 
+      resources :comments
+    end
   end
 
   get 'home', to: 'users#home'

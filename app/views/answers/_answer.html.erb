@@ -11,6 +11,7 @@
       <%= link_to "Edit", "/questions/#{@question.id}/answers/#{answer.id}/edit" %> 
       <%= link_to "Delete", "/questions/#{@question.id}/answers/#{answer.id}", method: :delete %>
     <% end %>
+    <%= link_to "View Comments (#{answer.comments.size})", [@question, answer]%>
    </div>
 </body>
 </html>
